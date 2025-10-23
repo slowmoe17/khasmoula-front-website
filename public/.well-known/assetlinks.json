@@ -5,7 +5,8 @@
       "namespace": "android_app",
       "package_name": "com.khasmoola.khasmoola",
       "sha256_cert_fingerprints": [
-        "B4:F3:C1:F1:85:E2:5C:64:83:24:27:4A:ED:63:79:D9:2D:85:B9:D8:C4:F6:83:41:E3:84:97:85:DC:AE:44:62"
+        "B4:F3:C1:F1:85:E2:5C:64:83:24:27:4A:ED:63:79:D9:2D:85:B9:D8:C4:F6:83:41:E3:84:97:85:DC:AE:44:62",
+        "28:E7:FB:12:F1:0A:A7:7A:C6:05:24:74:B0:2D:33:C4:26:76:21:FC:90:47:11:AF:BC:8D:B5:DD:70:DC:86:90"
       ]
     }
   }
