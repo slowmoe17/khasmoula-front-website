@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { BookmarkIcon } from "../icons";
+import { Button } from "../ui";
 
 function StoreCard() {
   return (
@@ -25,12 +26,22 @@ function StoreCard() {
           height={129}
           className="max-w-[129px] max-h-[129px] rounded-full"
         />
-
         <h3 className="text-xl font-semibold mt-5">نون</h3>
-
         <p className="text-center text-[22px] font-semibold">
           احصل علي خصومات تصل الي 40%
         </p>
+        <p className="text-center text-xl text-[#999999] mt-7">133 كوبون</p>
+        <div className="flex items-center justify-center gap-5 mt-9.5 px-9 pb-7">
+          <Button className="flex-1 font-semibold text-xl py-[17px] px-5 h-12 text-white">
+            عرض الكوبونات
+          </Button>
+          <Button
+            variant="outline"
+            className="flex-1 font-semibold text-xl py-[17px] px-5 h-12 text-primary border-primary"
+          >
+            عرض المتجر
+          </Button>
+        </div>
       </div>
     </div>
   );

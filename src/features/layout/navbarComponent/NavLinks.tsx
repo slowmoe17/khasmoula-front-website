@@ -18,7 +18,7 @@ const navLinks: NavLink[] = [
   },
   {
     label: "المتاجر",
-    href: routes.stores,
+    href: routes.store,
   },
   {
     label: "الكوبونات",
