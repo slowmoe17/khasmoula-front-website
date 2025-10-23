@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.khasmoola.khasmoola",
+      "sha256_cert_fingerprints": [
+        "B4:F3:C1:F1:85:E2:5C:64:83:24:27:4A:ED:63:79:D9:2D:85:B9:D8:C4:F6:83:41:E3:84:97:85:DC:AE:44:62"
+      ]
+    }
+  }
+]
