@@ -1,10 +1,13 @@
 import { routes } from "@/lib/route";
 import { redirect } from "next/navigation";
 
-function Page() {
-  redirect(routes.home);
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
 
-  return <div>Page</div>;
+async function Page({ params }: PageProps) {
+  const { id } = await params;
+  redirect(`${routes.home}?coupon=${id}`);
 }
 
 export default Page;
