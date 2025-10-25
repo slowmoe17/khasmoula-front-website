@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { useDebounce } from "use-debounce";
 import { cn } from "@/lib/utils";
 import { Input } from "./ui/input";
 import { Search } from "lucide-react";
+import { useRouter } from "@/i18n/navigation";
 
 interface InputSearchProps extends React.ComponentProps<"input"> {
   placeholder?: string;
@@ -30,6 +31,10 @@ function InputSearch(props: InputSearchProps) {
 
     if (debouncedSearch) {
       params.set("search", debouncedSearch);
+      const page = Number(params.get("page")) || 1;
+      if (page > 1) {
+        params.set("page", "1");
+      }
     } else {
       params.delete("search");
     }
@@ -50,7 +55,7 @@ function InputSearch(props: InputSearchProps) {
       <Input
         placeholder={placeholder}
         className={cn(
-          "bg-white rounded-[8px] ps-8 shadow-[0px_0px_4px_0px_#54982533] h-12 md:w-80 text-lg font-semibold placeholder:text-[#999999]",
+          "bg-white rounded-[8px] ps-8 shadow-[0px_0px_4px_0px_#54982533] h-12 w-full md:w-80 text-lg font-semibold placeholder:text-[#999999]",
           className
         )}
         value={searchValue}

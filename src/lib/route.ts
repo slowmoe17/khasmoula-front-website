@@ -1,11 +1,14 @@
 export const routes = {
   home: "/",
   store: "/store",
-  coupons: "/coupons",
-  categories: "/categories",
+  storeDetail: (id: string) => `/store/${id}`,
+  coupon: "/coupon",
+  couponDetail: (id: string) => `/coupon/${id}`,
+  category: "/category",
+  categoryDetail: (id: string) => `/category/${id}`,
   about: "/about",
   contact: "/contact",
-  bookmarked: "/bookmarked",
+  favorite: "/favorite",
   privacy: "/privacy",
   terms: "/terms",
 };

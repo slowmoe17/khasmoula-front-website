@@ -2,21 +2,27 @@
 
 import FilterSheet from "./FilterSheet";
 import InputSearch from "../InputSearch";
+import { TitlePage } from "../ui";
 
 interface FiltersProps {
   title: string;
   placeholder: string;
+  showInputSearch?: boolean;
 }
 
 function Filters(props: FiltersProps) {
-  const { title, placeholder } = props;
+  const { title, placeholder, showInputSearch = true } = props;
 
   return (
-    <section className="flex items-center justify-between">
-      <h1 className="text-[28px] font-semibold">{title}</h1>
-      <div className="flex items-center gap-5">
+    <section className="flex items-center justify-between max-sm:flex-wrap gap-3">
+      <TitlePage title={title} />
+      <div className="flex items-center gap-5 max-sm:grow">
         <FilterSheet />
-        <InputSearch placeholder={placeholder} />
+        {showInputSearch && (
+          <div className="max-sm:flex-1">
+            <InputSearch placeholder={placeholder} />
+          </div>
+        )}
       </div>
     </section>
   );

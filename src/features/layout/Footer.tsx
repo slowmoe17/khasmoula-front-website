@@ -1,8 +1,10 @@
 import { Button, Container } from "@/components";
 import EmailIcon from "@/components/icons/EmailIcon";
 import { Input } from "@/components/ui/input";
+import { Link } from "@/i18n/navigation";
 import { routes } from "@/lib/route";
-import Link from "next/link";
+import { TFunction } from "@/types";
+import { getTranslations } from "next-intl/server";
 
 const year = new Date().getFullYear();
 
@@ -11,44 +13,45 @@ interface FooterLink {
   links: string;
 }
 
-const footerLinks: FooterLink[] = [
+const footerLinks = (tLinks: TFunction): FooterLink[] => [
   {
-    title: "الخصوصيه",
+    title: tLinks("privacy"),
     links: routes.privacy,
   },
   {
-    title: "شروط الاستخدام",
+    title: tLinks("terms"),
     links: routes.terms,
   },
   {
-    title: "تواصل معنا",
+    title: tLinks("contact"),
     links: routes.contact,
   },
 ];
 
-function Footer() {
+async function Footer() {
+  const tLinks = await getTranslations("links");
+  const tFooter = await getTranslations("footer");
+
   return (
     <footer>
       <div className="py-12 bg-primary-light">
         <Container>
           <div className="space-y-5 text-[#1B1B1B] text-center">
-            <h6 className="text-2xl font-medium">خلّك أول من يعرف بالعروض!</h6>
-            <p className="text-sm">
-              سجّل إيميلك واستقبل أحدث أكواد الخصم والعروض الحصرية على بريدك.
-            </p>
+            <h6 className="text-2xl font-medium">{tFooter("title")}</h6>
+            <p className="text-sm">{tFooter("description")}</p>
 
-            <div className="flex items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-4 md:flex-row flex-col-reverse max-md:px-6">
               <Button
                 variant="default"
-                className="bg-primary text-white h-12 rounded-[10px] w-32"
+                className="bg-primary text-white h-12 rounded-[10px] w-32 max-md:w-full"
               >
-                اشترك الان
+                {tFooter("subscribe")}
               </Button>
-              <div className="relative">
+              <div className="relative w-full md:w-auto">
                 <EmailIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-[#999999]" />
                 <Input
                   dir="ltr"
-                  className="pl-12 placeholder:text-[#999999] font-medium h-12 border-[#999999] rounded-[10px] w-[366px]"
+                  className="pl-12 placeholder:text-[#999999] font-medium h-12 border-[#999999] rounded-[10px] w-full md:w-[366px]"
                   placeholder="example@gmail.com"
                 />
               </div>
@@ -57,7 +60,7 @@ function Footer() {
 
           {/* Footer Links */}
           <div className="flex items-center justify-center gap-4 mt-9.5 text-lg font-medium">
-            {footerLinks.map((link) => (
+            {footerLinks(tLinks).map((link) => (
               <Link
                 href={link.links}
                 key={link.title}
@@ -71,7 +74,7 @@ function Footer() {
       </div>
 
       <div className="bg-primary text-white grid place-items-center h-12 font-medium">
-        جميع الحقوق محفوظه لدي خصموله {year}©
+        {tFooter("allRightsReserved", { year })}
       </div>
     </footer>
   );

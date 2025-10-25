@@ -1,15 +1,18 @@
 import { Container } from "@/components";
 import Image from "next/image";
 import StatsHeroSwiper from "./StatsHeroSwiper";
+import { getTranslations } from "next-intl/server";
 
-function StatsHero() {
+async function StatsHero() {
+  const tHome = await getTranslations("home.statsHero");
+
   return (
     <section
       id="stats-hero"
       className="h-screen bg-primary relative overflow-hidden flex items-center justify-center"
     >
       <Container className="text-white h-fit w-full">
-        <p className="text-center text-3xl font-bold">ارقامنا تتحدث عنا</p>
+        <h2 className="text-center text-3xl font-bold">{tHome("title")}</h2>
 
         <div className="w-fit mx-auto mt-9.5">
           <Image
@@ -35,7 +38,7 @@ function StatsHero() {
       </div>
 
       {/* Hand Image */}
-      <div className="absolute top-0 right-0 w-full max-w-[387px] h-full flex items-start justify-start">
+      <div className="absolute top-0 right-0 w-full max-w-[387px] h-full items-start justify-start hidden lg:flex">
         <Image
           src="/handStatsHero.png"
           alt="stats-hero"

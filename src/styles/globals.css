@@ -154,3 +154,13 @@
     background: linear-gradient(250.87deg, #549825 37.12%, #aad25a 103.9%);
   }
 }
+
+.dashed-box {
+  width: 100%;
+  height: 2px; /* سمك الخط */
+  background: repeating-linear-gradient(
+    to right,
+    #fff 0 10px,
+    /* طول كل dash */ transparent 10px 20px /* المسافة بين الداشات */
+  );
+}

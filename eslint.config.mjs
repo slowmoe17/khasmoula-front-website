@@ -19,6 +19,22 @@ const eslintConfig = [
       "build/**",
       "next-env.d.ts",
     ],
+    rules: {
+      "no-restricted-imports": ["error", {
+          "paths": [
+            {
+              "name": "next/navigation",
+              "message": "Please use the navigation from @/i18n/navigation instead",
+              "importNames": ["redirect", "usePathname", "useRouter", ]
+            }, 
+            {
+              "name": "next/link",
+              "message": "Please use the navigation from @/i18n/navigation instead",
+              "importNames": ["default"]
+            }
+          ]
+        }]
+    },
   },
 ];
 

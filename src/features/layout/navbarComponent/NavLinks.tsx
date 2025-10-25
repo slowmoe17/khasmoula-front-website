@@ -2,55 +2,71 @@
 
 import { routes } from "@/lib/route";
 import { cn } from "@/lib/utils";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import React from "react";
+
+import { usePathname, Link } from "@/i18n/navigation";
+import React, { Fragment } from "react";
+import { useLocalization } from "@/hooks";
+import { TFunction } from "@/types";
 
 interface NavLink {
   label: string;
   href: string;
 }
 
-const navLinks: NavLink[] = [
+const navLinks = (t: TFunction): NavLink[] => [
   {
-    label: "الرئيسيه",
+    label: t("home"),
     href: routes.home,
   },
   {
-    label: "المتاجر",
+    label: t("store"),
     href: routes.store,
   },
   {
-    label: "الكوبونات",
-    href: routes.coupons,
+    label: t("coupon"),
+    href: routes.coupon,
   },
   {
-    label: "الاقسام",
-    href: routes.categories,
+    label: t("category"),
+    href: routes.category,
   },
   {
-    label: "من نحن",
+    label: t("about"),
     href: routes.about,
   },
 ];
 
-function NavLinks() {
-  const pathname = usePathname();
+interface NavLinksProps {
+  openMenu: boolean;
+  setOpenMenu: (open: boolean) => void;
+}
 
+function NavLinks({ openMenu, setOpenMenu }: NavLinksProps) {
+  const pathname = usePathname();
+  const { t } = useLocalization({ namespace: "links" });
   const isActive = (href: string) => pathname === href;
+
   return (
-    <div className="flex items-center gap-5">
-      {navLinks.map((link) => (
-        <Link
-          href={link.href}
-          key={link.href}
-          className={cn(
-            "text-lg font-semibold",
-            isActive(link.href) && "font-bold"
-          )}
-        >
-          {link.label}
-        </Link>
+    <div
+      className={cn(
+        "flex lg:items-center gap-y-3 gap-x-5 lg:flex-row flex-col max-lg:top-full max-lg:left-0 max-lg:absolute max-lg:w-full max-lg:bg-white max-lg:z-50 max-lg:opacity-0 transition-all duration-300 max-lg:invisible",
+        openMenu &&
+          "max-lg:border-t max-lg:p-4 max-lg:shadow-md max-lg:rounded-b-lg max-lg:opacity-100 max-lg:visible"
+      )}
+      onClick={() => setOpenMenu(false)}
+    >
+      {navLinks(t).map((link, index) => (
+        <Fragment key={index}>
+          <Link
+            href={link.href}
+            className={cn(
+              "md:text-lg font-semibold max-lg:first:hidden",
+              isActive(link.href) && "font-bold"
+            )}
+          >
+            {link.label}
+          </Link>
+        </Fragment>
       ))}
     </div>
   );

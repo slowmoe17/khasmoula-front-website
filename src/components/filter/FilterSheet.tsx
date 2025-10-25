@@ -17,7 +17,9 @@ import {
   SheetTrigger,
 } from "../ui/sheet";
 import FilterButtonsTab from "./FilterButtonsTab";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "@/i18n/navigation";
+import { useSearchParams } from "next/navigation";
+import { useLocalization } from "@/hooks";
 
 export interface FilterSelected {
   category?: string | undefined;
@@ -26,6 +28,8 @@ export interface FilterSelected {
 }
 
 function FilterSheet() {
+  const { direction } = useLocalization();
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -109,9 +113,9 @@ function FilterSheet() {
         </Button>
       </SheetTrigger>
       <SheetContent
-        side="right"
+        side={direction === "rtl" ? "right" : "left"}
         showCloseButton={false}
-        className="py-10 px-7 md:max-w-[500px]"
+        className="py-10 px-7 md:max-w-[500px] w-full"
       >
         <SheetHeader className="flex items-center justify-between flex-row">
           <SheetTitle className="text-2xl font-semibold">التصنيفات</SheetTitle>

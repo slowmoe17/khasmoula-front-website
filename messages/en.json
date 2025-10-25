@@ -1,0 +1,122 @@
+{
+  "langCode": "ar",
+  "links": {
+    "home": "Home",
+    "store": "Store",
+    "coupon": "Coupon",
+    "category": "Category",
+    "about": "About",
+    "contact": "Contact us",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "footer": {
+    "title": "Be the first to know about the best offers!",
+    "description": "Subscribe to our newsletter and receive the latest discount codes and exclusive offers in your inbox.",
+    "subscribe": "Subscribe now",
+    "allRightsReserved": "All rights reserved for Khasmoula {year}©"
+  },
+  "home": {
+    "hero": {
+      "title-1": "The",
+      "title-2": "is easier than ever! Copy your code and start shopping with confidence",
+      "description": "Your discounts are ready! Copy your code and start your smart shopping journey",
+      "showMore": "Explore more"
+    },
+    "statsHero": {
+      "title": "Our numbers speak for us",
+      "stats": {
+        "discountCoupon": {
+          "title": "Discount Coupon",
+          "value":"1000+"
+        },
+        "store":  {
+          "title": "Store",
+          "value": "500+"
+        },
+        "technicalSupport": {
+          "title": "Technical Support",
+          "value": "24H"
+        }
+      }
+    },
+    "storeMarquee": {
+      "title": "We have codes for +50 stores"
+    },
+    "recentOffers": {
+      "title": "Latest Offers"
+    },
+    "recentCoupons": {
+      "title": "Latest Coupons",
+      "showMore": "Show All"
+    }
+  },
+  "store": {
+    "filters": {
+      "title": "Our Stores",
+      "placeholder": "Search for a store..."
+    }
+  },
+  "coupon": {
+    "filters": {
+      "title": "Coupons",
+      "placeholder": "Search for a coupon..."
+    }
+  },
+  "category": {
+    "title": "Categories"
+  },
+  "favorite": {
+    "filters": {
+      "title": "Favorites",
+      "placeholder": "Search for a favorite..."
+    }
+  },
+  "categoryDetail": {
+    "filters": {
+      "placeholder": "Search for a store..."
+    }
+  },
+  "components": {
+    "couponCard": {
+      "title": "Discount {discount}% from {store}",
+      "description": "Save {discount}% on {store}! Copy your code and start shopping with confidence 🎉",
+      "copyCode": "Copy Code",
+      "copied": "Code Copied",
+      "useCode": "Use the code now and get the best price before the offer ends 🔥",
+      "goToLink": "Go to the link",
+      "close": "Close",
+      "share": {
+        "title": "Share this coupon"
+      }
+    },
+    "storeCard": {
+      "mostUsed": "Most Used",
+      "description": "Get discounts up to {discount}%",
+      "couponsCount": "{couponsCount} Coupon",
+      "showCoupons": "Show Coupons",
+      "showStore": "Show Store"
+    },
+    "categoryCard": {
+      "couponsCount": "{couponsCount} Discount Available"
+    },
+    "tabs": {
+      "stores": "Stores",
+      "coupons": "Coupons"
+    },
+    "mailSubscription": {
+      "title": "Be the first to know about the best offers!",
+      "description": "Subscribe to our newsletter and receive the latest discount codes and exclusive offers in your inbox.",
+      "field": {
+        "email": "Email",
+        "placeholder": "Enter your email"
+      },
+      "button": {
+        "subscribe": "Subscribe now"
+      },
+      "footer": {
+        "description": "We don't send spam 🚫 — just the offers that matter to you."
+      }
+    }
+  }
+}
