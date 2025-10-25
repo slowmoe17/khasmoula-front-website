@@ -14,6 +14,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { useSendMessage } from "../hooks";
+import { useLocalization } from "@/hooks";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -30,6 +31,9 @@ const formSchema = z.object({
 });
 
 function ContactForm() {
+  const { t: tForm } = useLocalization({ namespace: "contact.form" });
+  const { t: tButton } = useLocalization({ namespace: "contact.button" });
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -55,9 +59,9 @@ function ContactForm() {
               name="name"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="m-0">الاسم بالكامل</FormLabel>
+                  <FormLabel className="m-0">{tForm("name.label")}</FormLabel>
                   <FormControl>
-                    <Input placeholder="ادخل اسمك بالكامل" {...field} />
+                    <Input placeholder={tForm("name.placeholder")} {...field} />
                   </FormControl>
 
                   <FormMessage />
@@ -69,10 +73,10 @@ function ContactForm() {
               name="email"
               render={({ field }) => (
                 <FormItem className="w-full">
-                  <FormLabel className="m-0">البريد الاكلتروني</FormLabel>
+                  <FormLabel className="m-0">{tForm("email.label")}</FormLabel>
                   <FormControl>
                     <Input
-                      placeholder="ادخل بريدك الالكتروني"
+                      placeholder={tForm("email.placeholder")}
                       {...field}
                       type="email"
                     />
@@ -88,10 +92,10 @@ function ContactForm() {
             name="message"
             render={({ field }) => (
               <FormItem className="w-full">
-                <FormLabel className="m-0">رسالتك</FormLabel>
+                <FormLabel className="m-0">{tForm("message.label")}</FormLabel>
                 <FormControl>
                   <Textarea
-                    placeholder="تفضل اكتب ما تريده"
+                    placeholder={tForm("message.placeholder")}
                     {...field}
                     className="min-h-60 max-h-80"
                   />
@@ -107,7 +111,7 @@ function ContactForm() {
             className="lg:mt-12 md:mt-8 mt-4 lg:h-14 h-12  lg:text-2xl text-lg w-full"
             disabled={isPending}
           >
-            إرسال
+            {tButton("submit")}
           </Button>
         </form>
       </Form>

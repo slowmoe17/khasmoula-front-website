@@ -11,7 +11,16 @@ api.interceptors.request.use((config) => {
   if (typeof window !== "undefined") {
     const country = localStorage.getItem("country") || "egypt";
 
-    config.params = { ...(config.params || {}), country };
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    const locale = pathParts[0];
+
+    const lang = ["en", "ar"].includes(locale) ? locale : "en";
+
+    config.params = {
+      ...(config.params || {}),
+      country,
+      lang,
+    };
   }
   return config;
 });

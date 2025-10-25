@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 import EmailSubscription from "./EmailSubscription";
 import Navbar from "./Navbar";
 import { DetectCountry } from "../app";
+import { FavoritesProvider } from "@/context/FavoritesContext";
 
 const queryClient = new QueryClient();
 
@@ -15,11 +16,13 @@ interface AppGlobalProps {
 function AppGlobal({ children }: AppGlobalProps) {
   return (
     <QueryClientProvider client={queryClient}>
-      <DetectCountry />
-      <Navbar />
+      <FavoritesProvider>
+        <DetectCountry />
+        <Navbar />
 
-      <EmailSubscription />
-      {children}
+        <EmailSubscription />
+        {children}
+      </FavoritesProvider>
     </QueryClientProvider>
   );
 }

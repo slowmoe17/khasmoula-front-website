@@ -1,15 +1,17 @@
 import { Container, TitlePage } from "@/components";
 import { ContactForm } from "@/features/contact";
+import { getTranslations } from "next-intl/server";
 
-function Page() {
+async function Page() {
+  const tContact = await getTranslations("contact");
+
   return (
     <div className="pt-[70px] lg:pb-[205px] pb-[170px]">
       <Container>
         <div className="text-center space-y-5 max-w-[597px] mx-auto">
-          <TitlePage title="تواصل معنا" />
+          <TitlePage title={tContact("title")} />
           <p className="max-sm:text-base text-[22px] text-[#161616]">
-            ودّك تسأل عن شي؟ أو عندك اقتراح؟ ترا فريقنا جاهز يسمعك ويخدمك بأسرع
-            وقت 💬
+            {tContact("description")}
           </p>
         </div>
 

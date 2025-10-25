@@ -8,7 +8,7 @@ export type Store = {
   coverImage: string;
   link: string;
   maxCouponValue: number;
-  // coupons: number;
+  couponsCount: number;
   isActive: boolean;
   createdAt: Date;
   updatedAt: Date;

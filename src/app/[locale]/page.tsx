@@ -1,6 +1,7 @@
 import {
   DetectCoupon,
   HeroSection,
+  RecentCoupons,
   RecentOffers,
   StatsHero,
   StoreMarquee,
@@ -13,7 +14,7 @@ export default function Home() {
       <StatsHero />
       <StoreMarquee />
       <RecentOffers />
-      {/* <RecentCoupons /> */}
+      <RecentCoupons />
       <DetectCoupon />
     </div>
   );

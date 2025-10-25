@@ -3,14 +3,14 @@
 import { Container, Pagination, TitlePage } from "@/components";
 import HandleResponse from "@/components/HandleResponse";
 import { CategoryCard, useCategories } from "@/features/category";
-import { useLocalization, usePagination } from "@/hooks";
+import { useFilters, useLocalization } from "@/hooks";
 
 function Page() {
   const { t: tCategoryTitle } = useLocalization({
     namespace: "category",
   });
 
-  const { page, handlePageChange } = usePagination();
+  const { page, handlePageChange } = useFilters();
 
   const {
     data: {

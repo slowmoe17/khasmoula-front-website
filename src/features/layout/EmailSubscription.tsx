@@ -40,8 +40,10 @@ function EmailSubscription() {
 
   const handleSubmit = useCallback(() => {
     if (email) localStorage.setItem("email", email);
-    setOpen(false);
-  }, [email]);
+    const deviceId = getOrCreateDeviceId();
+    if (!deviceId) return;
+    registerDevice({ deviceId, email }, { onSuccess: () => setOpen(false) });
+  }, [email, registerDevice]);
 
   useEffect(() => {
     if (open) {

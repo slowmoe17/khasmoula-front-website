@@ -23,13 +23,11 @@ function DetectCoupon() {
 
   const [open, setOpen] = useState(!!couponId);
   useEffect(() => {
-    if (!couponId && !isLoading && !coupon) {
-      setTimeout(() => {
-        router.replace({
-          pathname: routes.home,
-        });
-        setOpen(false);
-      }, 3000);
+    if (!couponId) return;
+    if (!isLoading && !coupon) {
+      router.replace({
+        pathname: routes.home,
+      });
     }
   }, [couponId, router, isLoading, coupon]);
 
@@ -47,7 +45,7 @@ function DetectCoupon() {
 
   return (
     <Dialog open={open} onOpenChange={handleClose}>
-      <DialogContent showCloseButton={false}>
+      <DialogContent showCloseButton={false} className="overflow-hidden">
         <DialogTitle className="hidden">Detect Coupon</DialogTitle>
         <DialogDescription className="hidden">Detect Coupon</DialogDescription>
 

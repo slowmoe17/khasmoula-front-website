@@ -1,10 +1,9 @@
 "use client";
 
+import { useLocalization } from "@/hooks";
+import { Link } from "@/i18n/navigation";
 import { routes } from "@/lib/route";
 import Image from "next/image";
-import { Link } from "@/i18n/navigation";
-import React from "react";
-import { useLocalization } from "@/hooks";
 import { Category } from "../types";
 
 type CategoryCardProps = {
@@ -17,7 +16,11 @@ function CategoryCard({ category }: CategoryCardProps) {
   });
   return (
     <Link
-      href={routes.categoryDetail(category._id)}
+      href={
+        category.coupons > 0
+          ? routes.categoryDetail(category._id)
+          : routes.coupon
+      }
       className="bg-white rounded-[10px] p-5 shadow-[0px_0px_4px_0px_#00000036] flex items-center gap-5"
     >
       <div className="w-[60px] h-[60px] rounded-full bg-[#54982536] flex items-center justify-center">

@@ -2,23 +2,22 @@
 
 import { cn } from "@/lib/utils";
 import { Button } from "../ui";
-
-// Mock data for filter buttons
-const FILTER_BUTTONS = [
-  { label: "الكترونيات", value: "electronics" },
-  { label: "ملابس", value: "clothes" },
-  { label: "منزلية", value: "home" },
-];
+import { useLocalization } from "@/hooks";
 
 interface FilterButtonsTabProps {
   onSelectFilter: (value: string) => void;
   selectedValue: string;
+  buttons: { label: string; value: string }[];
 }
 
 function FilterButtonsTab({
   onSelectFilter,
   selectedValue,
+  buttons,
 }: FilterButtonsTabProps) {
+  const { t: tFiltersCouponsSheet } = useLocalization({
+    namespace: "components.filtersCouponsSheet",
+  });
   // Handler for selecting a button
   const handleClick = (value?: string) => {
     onSelectFilter(value ?? "");
@@ -34,9 +33,9 @@ function FilterButtonsTab({
         )}
         onClick={() => handleClick(undefined)}
       >
-        الكل
+        {tFiltersCouponsSheet("all")}
       </Button>
-      {FILTER_BUTTONS.map((btn) => (
+      {buttons.map((btn) => (
         <Button
           key={btn.value}
           variant={selectedValue === btn.value ? "default" : "outline"}

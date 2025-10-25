@@ -1,19 +1,21 @@
+"use client";
 import { useQuery } from "@tanstack/react-query";
 import { getUserCountry } from "../services/userCountry.api";
 import { useEffect } from "react";
 
 function useGetUserCountry() {
-  const { data, isLoading } = useQuery({
+  const { data: countryCode, isLoading } = useQuery({
     queryKey: ["user-country"],
     queryFn: getUserCountry,
+    retry: false,
   });
 
   useEffect(() => {
     if (isLoading) return;
-    if (data?.country) {
-      localStorage.setItem("country", data.country);
+    if (countryCode) {
+      localStorage.setItem("country", countryCode);
     }
-  }, [data?.country, isLoading]);
+  }, [countryCode, isLoading]);
 
   return null;
 }

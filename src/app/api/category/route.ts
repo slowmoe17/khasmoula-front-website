@@ -9,13 +9,10 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const filters = Object.fromEntries(searchParams.entries()) as APIFilters;
 
-    const country = searchParams.get("country") || "";
-
     const locale = await getLocale();
 
     const response = await createAxiosServer({
       lang: locale,
-      country,
     }).get("/category", { params: filters });
 
     return NextResponse.json(response.data, { status: 200 });

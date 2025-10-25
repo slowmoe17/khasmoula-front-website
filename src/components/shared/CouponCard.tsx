@@ -18,7 +18,7 @@ function CouponCard(props: { coupon: Coupon }) {
   return (
     <div className="bg-primary-light-active border border-[#999999B2] rounded-[10px] pb-8 max-md:overflow-hidden">
       <div className="md:px-5 px-3 md:pt-5 pt-3 flex items-center justify-between">
-        <BookmarkButton />
+        <BookmarkButton item={coupon} type="coupon" />
         <ShareButton _id={coupon._id} />
       </div>
       <div className="md:mt-5.5 mt-2">

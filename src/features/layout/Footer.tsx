@@ -1,10 +1,9 @@
-import { Button, Container } from "@/components";
-import EmailIcon from "@/components/icons/EmailIcon";
-import { Input } from "@/components/ui/input";
+import { Container } from "@/components";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/lib/route";
 import { TFunction } from "@/types";
 import { getTranslations } from "next-intl/server";
+import { SubscribeEmail } from "../app";
 
 const year = new Date().getFullYear();
 
@@ -40,22 +39,7 @@ async function Footer() {
             <h6 className="text-2xl font-medium">{tFooter("title")}</h6>
             <p className="text-sm">{tFooter("description")}</p>
 
-            <div className="flex items-center justify-center gap-4 md:flex-row flex-col-reverse max-md:px-6">
-              <Button
-                variant="default"
-                className="bg-primary text-white h-12 rounded-[10px] w-32 max-md:w-full"
-              >
-                {tFooter("subscribe")}
-              </Button>
-              <div className="relative w-full md:w-auto">
-                <EmailIcon className="absolute left-3 top-1/2 -translate-y-1/2 text-[#999999]" />
-                <Input
-                  dir="ltr"
-                  className="pl-12 placeholder:text-[#999999] font-medium h-12 border-[#999999] rounded-[10px] w-full md:w-[366px]"
-                  placeholder="example@gmail.com"
-                />
-              </div>
-            </div>
+            <SubscribeEmail buttonText={tFooter("subscribe")} />
           </div>
 
           {/* Footer Links */}

@@ -1,4 +1,6 @@
-import { APIResponseMany } from "@/types";
+import { Coupon } from "@/features/coupon";
+import { Store } from "@/features/stores";
+import { APIResponseMany, APIResponseMeta } from "@/types";
 
 export type Category = {
   _id: string;
@@ -9,3 +11,9 @@ export type Category = {
 export type GetCategoriesResponse = APIResponseMany<
   Category & { coupons: number }
 >;
+
+export type GetCategoryByIdResponse = {
+  meta: APIResponseMeta;
+  category: Category;
+  data: Coupon[] | Store[];
+};

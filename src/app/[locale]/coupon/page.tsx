@@ -3,8 +3,7 @@
 import { Container, CouponCard, Filters, Pagination } from "@/components";
 import HandleResponse from "@/components/HandleResponse";
 import { useCoupons } from "@/features/coupon";
-import { useLocalization, usePagination } from "@/hooks";
-import { useSearchParams } from "next/navigation";
+import { useFilters, useLocalization } from "@/hooks";
 import { Suspense } from "react";
 
 function Page() {
@@ -12,14 +11,12 @@ function Page() {
     namespace: "coupon.filters",
   });
 
-  const { page, handlePageChange } = usePagination();
-  const searchParams = useSearchParams();
-  const search = searchParams.get("search") || "";
+  const { page, handlePageChange, getAllSearchParams } = useFilters();
 
   const {
     data: { meta = { total: 0, limit: 0, page: 1 }, data: coupons = [] } = {},
     isLoading,
-  } = useCoupons({ page: search ? 1 : page, search });
+  } = useCoupons({ page, ...getAllSearchParams() });
 
   return (
     <div className="sm:pt-[70px] pt-[50px] lg:pb-[205px] pb-[170px]">
@@ -28,6 +25,7 @@ function Page() {
           <Filters
             title={tCoupon("title")}
             placeholder={tCoupon("placeholder")}
+            filterType="coupon"
           />
         </Suspense>
 

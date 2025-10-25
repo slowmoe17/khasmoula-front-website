@@ -70,11 +70,36 @@
     "filters": {
       "title": "Favorites",
       "placeholder": "Search for a favorite..."
+    },
+    "noFavorites": {
+      "title": "No Favorites",
+      "description": "No favorites yet"
     }
   },
   "categoryDetail": {
     "filters": {
       "placeholder": "Search for a store..."
+    }
+  },
+  "contact": {
+    "title": "Contact us",
+    "description": "We are here to help you! If you have any questions or suggestions, please feel free to contact us.",
+    "form": {
+      "name": {
+        "label": "Full Name",
+        "placeholder": "Enter your full name"
+      },
+      "email": {
+        "label": "Email",
+        "placeholder": "Enter your email"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Enter your message"
+      }
+    },
+    "button": {
+      "submit": "Submit"
     }
   },
   "components": {
@@ -117,6 +142,45 @@
       "footer": {
         "description": "We don't send spam 🚫 — just the offers that matter to you."
       }
+    },
+    "pagination": {
+      "next": "Next",
+      "previous": "Previous"
+    },
+    "filtersCouponsSheet": {
+      "title": "Categories",
+      "clearFilters": "Clear Filters",
+      "filterCount": "{count} Category",
+      "filterCategory": "Filter by Categories",
+      "filterDiscount": "Discount Type",
+      "filterValid": "Valid Type",
+      "applyFilters": "Apply",
+      "discountTypes": {
+        "fixed": "Fixed Discount",
+        "percentage": "Percentage Discount"
+      },
+      "validTypes": {
+        "today": "Daily",
+        "week": "Weekly",
+        "month": "Monthly"
+      },
+      "all": "All"
+    },
+    "filtersStoresSheet": {
+      "title": "Stores",
+      "clearFilters": "Clear Filters",
+      "filterCount": "{count} Store",
+      "filterSortName": "Sort by Name",
+      "sortNames": {
+        "a-z": "A - Z",
+        "z-a": "Z - A"
+      },
+      "filterSortCouponsCount": "Sort by Coupons Count",
+      "sortCouponsCounts": {
+        "asc": "Low",
+        "desc": "High"
+      },
+      "applyFilters": "Apply"
     }
   }
 }
