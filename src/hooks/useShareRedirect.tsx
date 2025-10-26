@@ -1,8 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function useShareRedirect() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const userAgent =
       typeof navigator !== "undefined" ? navigator.userAgent : "";
@@ -14,19 +16,22 @@ function useShareRedirect() {
     const isAndroid = /android/i.test(userAgent);
     const isIOS = /iPad|iPhone|iPod/.test(userAgent);
 
-    console.log(userAgent);
-    console.log(isAndroid, isIOS);
-
     if (isAndroid) {
       setTimeout(() => {
         window.location.href = playStore;
+        setIsLoading(false);
       }, 1500);
     } else if (isIOS) {
       setTimeout(() => {
         window.location.href = appStore;
+        setIsLoading(false);
       }, 1500);
+    } else {
+      setIsLoading(false);
     }
   }, []);
+
+  return { isLoading };
 }
 
 export { useShareRedirect };

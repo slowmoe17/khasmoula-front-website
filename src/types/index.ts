@@ -11,6 +11,10 @@ export type APIResponseMany<T> = {
   data: T[];
 };
 
+export type APIResponseMessage = {
+  message: string;
+};
+
 export type APIFilters = {
   page?: number;
   limit?: number | false;

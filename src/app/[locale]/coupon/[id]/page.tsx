@@ -1,24 +1,26 @@
 "use client";
 
+import { LoadingFullScreen } from "@/components";
 import { useShareRedirect } from "@/hooks/useShareRedirect";
-
-// interface PageProps {
-//   params: Promise<{ id: string }>;
-// }
+import { redirect } from "@/i18n/navigation";
+import { routes } from "@/lib/route";
+import { useLocale } from "next-intl";
+import { useParams } from "next/navigation";
 
 function Page() {
-  useShareRedirect();
-  // const { id } = await params;
+  const { id } = useParams<{ id: string }>();
+  const locale = useLocale();
+  const { isLoading: isShareRedirectLoading } = useShareRedirect();
 
-  // const locale = await getLocale();
+  if (isShareRedirectLoading) return <LoadingFullScreen />;
 
-  // redirect({
-  //   href: {
-  //     pathname: routes.home,
-  //     query: { coupon: id },
-  //   },
-  //   locale,
-  // });
+  redirect({
+    href: {
+      pathname: routes.home,
+      query: { coupon: id },
+    },
+    locale,
+  });
 }
 
 export default Page;

@@ -1,19 +1,26 @@
 "use client";
 
-import { Coupon } from "@/features/coupon";
+import { Coupon, useCouponCount } from "@/features/coupon";
 import { useLocalization } from "@/hooks";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/lib/route";
 import Image from "next/image";
+import { useCallback } from "react";
 import CopyCodeButton from "../CopyCodeButton";
 import BookmarkButton from "./BookmarkButton";
 import ShareButton from "./ShareButton";
 
 function CouponCard(props: { coupon: Coupon }) {
   const { coupon } = props;
+  const { mutate: couponCountMutation } = useCouponCount();
+
   const { t: tComponents } = useLocalization({
     namespace: "components.couponCard",
   });
+
+  const handleCopy = useCallback(() => {
+    couponCountMutation(coupon._id);
+  }, [coupon._id, couponCountMutation]);
 
   return (
     <div className="bg-primary-light-active border border-[#999999B2] rounded-[10px] pb-8 max-md:overflow-hidden">
@@ -54,7 +61,11 @@ function CouponCard(props: { coupon: Coupon }) {
         </div>
 
         <div className="px-9.5">
-          <CopyCodeButton code={coupon.code} link={coupon.store.link} />
+          <CopyCodeButton
+            code={coupon.code}
+            link={coupon.store.link}
+            onCopy={handleCopy}
+          />
         </div>
       </div>
     </div>

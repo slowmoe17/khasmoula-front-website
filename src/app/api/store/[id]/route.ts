@@ -1,4 +1,5 @@
 import { createAxiosServer } from "@/lib/axios";
+import { APIFilters } from "@/types";
 import axios from "axios";
 import { getLocale } from "next-intl/server";
 
@@ -9,10 +10,13 @@ export async function GET(
   try {
     const { id } = await params;
 
+    const { searchParams } = new URL(request.url);
+    const filters = Object.fromEntries(searchParams.entries()) as APIFilters;
+
     const locale = await getLocale();
     const store = await createAxiosServer({
       lang: locale,
-    }).get(`/store/${id}`);
+    }).get(`/store/${id}`, { params: filters });
 
     return Response.json(store.data);
   } catch (error) {

@@ -5,3 +5,4 @@ export * from "./input";
 export * from "./label";
 export * from "./dialog";
 export * from "./pagination";
+export { default as LoadingFullScreen } from "./LoadingFullScreen";

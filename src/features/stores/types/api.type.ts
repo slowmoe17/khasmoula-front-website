@@ -20,5 +20,5 @@ export type GetStoresResponse = APIResponseMany<Store>;
 export type GetStoreResponse = {
   meta: APIResponseMeta;
   store: Store;
-  coupons: Coupon[];
+  coupons: Omit<Coupon, "store">[];
 };

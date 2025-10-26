@@ -4,7 +4,12 @@ import { usePathname, useRouter } from "@/i18n/navigation";
 import { useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 
-export function useFilters() {
+interface UseFiltersProps {
+  scroll?: boolean;
+}
+
+export function useFilters(props: UseFiltersProps = { scroll: true }) {
+  const { scroll = true } = props;
   const router = useRouter();
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -50,9 +55,9 @@ export function useFilters() {
         }
       });
 
-      router.replace(`${pathname}?${params.toString()}`);
+      router.replace(`${pathname}?${params.toString()}`, { scroll });
     },
-    [searchParams, router, pathname]
+    [searchParams, router, pathname, scroll]
   );
 
   // Remove specific parameters
@@ -60,15 +65,15 @@ export function useFilters() {
     (keys: string[]) => {
       const params = new URLSearchParams(searchParams.toString());
       keys.forEach((key) => params.delete(key));
-      router.replace(`${pathname}?${params.toString()}`);
+      router.replace(`${pathname}?${params.toString()}`, { scroll });
     },
-    [searchParams, router, pathname]
+    [searchParams, router, pathname, scroll]
   );
 
   // Clear all parameters
   const clearAllParams = useCallback(() => {
-    router.replace(pathname);
-  }, [router, pathname]);
+    router.replace(pathname, { scroll });
+  }, [router, pathname, scroll]);
 
   return {
     router,

@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import { getStore } from "../api/store.api";
+import { APIFilters } from "@/types";
 
-function useStore(id: string) {
+function useStore(id: string, filters?: APIFilters) {
   return useQuery({
-    queryKey: ["store", id],
-    queryFn: () => getStore(id),
+    queryKey: ["store", id, filters],
+    queryFn: () => getStore(id, filters),
     enabled: !!id,
   });
 }

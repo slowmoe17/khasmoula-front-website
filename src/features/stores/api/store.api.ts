@@ -9,7 +9,10 @@ export const getStores = async (
   return res.data;
 };
 
-export const getStore = async (id: string): Promise<GetStoreResponse> => {
-  const res = await api.get(`/store/${id}`);
+export const getStore = async (
+  id: string,
+  filters?: APIFilters
+): Promise<GetStoreResponse> => {
+  const res = await api.get(`/store/${id}`, { params: filters });
   return res.data;
 };

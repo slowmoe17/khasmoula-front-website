@@ -24,20 +24,25 @@ import {
 } from "../ui/sheet";
 import FilterButtonsTab from "./FilterButtonsTab";
 
+interface UseFiltersProps {
+  scroll?: boolean;
+}
+
 export interface FilterSelected {
   categoryId?: string | undefined;
   discountType?: string | undefined;
   validType?: string | undefined;
 }
 
-function FiltersCouponsSheet() {
+function FiltersCouponsSheet(props: UseFiltersProps) {
+  const { scroll = true } = props;
   const pathname = usePathname();
   const isCategoryPage = pathname.includes(routes.category);
   const { direction, t: tFiltersCouponsSheet } = useLocalization({
     namespace: "components.filtersCouponsSheet",
   });
   const { updateParams, clearAllParams, getAllSearchParams, searchParams } =
-    useFilters();
+    useFilters({ scroll });
 
   const [isOpen, setIsOpen] = useState(false);
 

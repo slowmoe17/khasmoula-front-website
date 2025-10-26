@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import useEmblaCarousel from "embla-carousel-react";
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState, memo } from "react";
 import { useLocalization } from "@/hooks";
 import Autoplay from "embla-carousel-autoplay";
 import { useBanners } from "@/features/banner";
@@ -92,4 +92,4 @@ function BannersSwiper() {
   );
 }
 
-export default BannersSwiper;
+export default memo(BannersSwiper);

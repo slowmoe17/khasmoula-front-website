@@ -20,17 +20,22 @@ import {
 } from "../ui/sheet";
 import FilterButtonsTab from "./FilterButtonsTab";
 
+interface UseFiltersProps {
+  scroll?: boolean;
+}
+
 export interface StoreFilterSelected {
   name?: string | undefined;
   couponsCount?: string | undefined;
 }
 
-function FilterStoresSheet() {
+function FilterStoresSheet(props: UseFiltersProps) {
+  const { scroll = true } = props;
   const { direction, t: tFiltersStoresSheet } = useLocalization({
     namespace: "components.filtersStoresSheet",
   });
   const { updateParams, clearAllParams, getAllSearchParams, searchParams } =
-    useFilters();
+    useFilters({ scroll });
 
   const [isOpen, setIsOpen] = useState(false);
 

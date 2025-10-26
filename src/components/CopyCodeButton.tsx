@@ -9,10 +9,11 @@ import { useLocalization } from "@/hooks";
 interface CopyCodeButtonProps {
   code: string;
   link: string;
+  onCopy: () => void;
 }
 
 function CopyCodeButton(props: CopyCodeButtonProps) {
-  const { code, link } = props;
+  const { code, link, onCopy } = props;
   const { t: tComponents } = useLocalization({
     namespace: "components.couponCard",
   });
@@ -20,6 +21,7 @@ function CopyCodeButton(props: CopyCodeButtonProps) {
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
+    onCopy?.();
     setIsCopied(true);
   };
 
