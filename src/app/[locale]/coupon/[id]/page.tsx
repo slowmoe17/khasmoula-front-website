@@ -1,23 +1,24 @@
-import { routes } from "@/lib/route";
-import { redirect } from "@/i18n/navigation";
-import { getLocale } from "next-intl/server";
+"use client";
 
-interface PageProps {
-  params: Promise<{ id: string }>;
-}
+import { useShareRedirect } from "@/hooks/useShareRedirect";
 
-async function Page({ params }: PageProps) {
-  const { id } = await params;
+// interface PageProps {
+//   params: Promise<{ id: string }>;
+// }
 
-  const locale = await getLocale();
+function Page() {
+  useShareRedirect();
+  // const { id } = await params;
 
-  redirect({
-    href: {
-      pathname: routes.home,
-      query: { coupon: id },
-    },
-    locale,
-  });
+  // const locale = await getLocale();
+
+  // redirect({
+  //   href: {
+  //     pathname: routes.home,
+  //     query: { coupon: id },
+  //   },
+  //   locale,
+  // });
 }
 
 export default Page;

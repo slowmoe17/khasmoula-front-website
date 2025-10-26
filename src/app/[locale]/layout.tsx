@@ -12,7 +12,7 @@ import { ReactNode } from "react";
 const cairoSans = Cairo({
   subsets: ["arabic"],
   weight: ["400", "500", "600", "700"],
-  display: "swap",
+  display: "auto",
   variable: "--font-cairo",
 });
 
