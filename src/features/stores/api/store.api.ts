@@ -1,6 +1,6 @@
 import api from "@/lib/axios";
 import { APIFilters } from "@/types";
-import { GetStoresResponse, Store } from "../types";
+import { GetStoreResponse, GetStoresResponse } from "../types";
 
 export const getStores = async (
   filters?: APIFilters
@@ -9,7 +9,7 @@ export const getStores = async (
   return res.data;
 };
 
-export const getStore = async (id: string): Promise<Store> => {
+export const getStore = async (id: string): Promise<GetStoreResponse> => {
   const res = await api.get(`/store/${id}`);
   return res.data;
 };

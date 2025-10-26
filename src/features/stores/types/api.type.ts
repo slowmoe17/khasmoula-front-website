@@ -1,4 +1,5 @@
-import { APIResponseMany } from "@/types";
+import { Coupon } from "@/features/coupon";
+import { APIResponseMany, APIResponseMeta } from "@/types";
 
 // Store
 export type Store = {
@@ -15,3 +16,9 @@ export type Store = {
 };
 
 export type GetStoresResponse = APIResponseMany<Store>;
+
+export type GetStoreResponse = {
+  meta: APIResponseMeta;
+  store: Store;
+  coupons: Coupon[];
+};

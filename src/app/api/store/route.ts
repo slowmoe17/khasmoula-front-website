@@ -7,11 +7,9 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const filters = Object.fromEntries(searchParams.entries()) as APIFilters;
 
-    const country = searchParams.get("country") || "";
     const lang = searchParams.get("locale") || "";
 
     const stores = await createAxiosServer({
-      country,
       lang,
     }).get("/store", {
       params: filters,
