@@ -3,8 +3,11 @@
     "apps": [],
     "details": [
       {
-        "appID": "TEAMID.com.yourcompany.yourapp",
-        "paths": [ "/path/*", "/another/path" ]
+        "appID": "2T67VT5WSK.com.khasmoola.khasmoola",
+        "paths": [
+          "/coupon/*",
+          "/store/*"
+        ]
       }
     ]
   }
