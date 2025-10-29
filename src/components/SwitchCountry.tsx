@@ -28,7 +28,9 @@ function SwitchCountry() {
   const handleChangeCountry = (code: string) => {
     setCountry(code);
     localStorage.setItem("country", code);
-    queryClient.invalidateQueries();
+    queryClient.invalidateQueries({
+      predicate: (query) => query.queryKey[0] !== "user-country",
+    });
   };
 
   return (

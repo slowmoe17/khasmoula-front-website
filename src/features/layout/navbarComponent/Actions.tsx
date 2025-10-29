@@ -16,7 +16,7 @@ function Actions() {
     <div className="flex items-center gap-7">
       <Button
         variant="default"
-        className="font-bold px-4 rounded-full h-10.5 w-32"
+        className="font-bold px-4 rounded-full h-10.5 w-32 max-sm:hidden"
         asChild
       >
         <Link href={routes.contact}>{t("contact")}</Link>

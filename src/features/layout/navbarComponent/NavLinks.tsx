@@ -7,6 +7,7 @@ import { usePathname, Link } from "@/i18n/navigation";
 import React, { Fragment } from "react";
 import { useLocalization } from "@/hooks";
 import { TFunction } from "@/types";
+import { Button } from "@/components";
 
 interface NavLink {
   label: string;
@@ -68,6 +69,14 @@ function NavLinks({ openMenu, setOpenMenu }: NavLinksProps) {
           </Link>
         </Fragment>
       ))}
+
+      <Button
+        variant="default"
+        className="font-bold px-4 rounded-full h-10.5 w-32 sm:hidden"
+        asChild
+      >
+        <Link href={routes.contact}>{t("contact")}</Link>
+      </Button>
     </div>
   );
 }
