@@ -3,11 +3,15 @@
 import { CouponCard } from "@/components";
 import HandleResponse from "@/components/HandleResponse";
 import { useCoupons } from "@/features/coupon";
+import { useLocalization } from "@/hooks";
 import { useParams } from "next/navigation";
-import { memo, Suspense } from "react";
+import { memo } from "react";
 
 function MostUsed() {
   const { id } = useParams<{ id: string }>();
+  const { t: tStoreDetail } = useLocalization({
+    namespace: "storeDetail",
+  });
 
   const { data: { data: coupons = [] } = {}, isLoading } = useCoupons({
     limit: 9,
@@ -15,13 +19,13 @@ function MostUsed() {
     store: id,
   });
 
+  if (!isLoading && coupons.length === 0) return;
+
   return (
     <section className="md:py-14 py-8">
-      <Suspense>
-        <h2 className="text-[28px] font-semibold max-sm:text-xl">
-          الاكثر استخداما
-        </h2>
-      </Suspense>
+      <h2 className="text-[28px] font-semibold max-sm:text-xl">
+        {tStoreDetail("mostUsed.title")}
+      </h2>
 
       <HandleResponse
         dataLength={coupons.length}

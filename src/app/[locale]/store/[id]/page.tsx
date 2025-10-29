@@ -10,10 +10,14 @@ import {
 } from "@/components";
 import HandleResponse from "@/components/HandleResponse";
 import { BannersSwiper, MostUsed, useStore } from "@/features/stores";
-import { useFilters, useShareRedirect } from "@/hooks";
+import { useFilters, useLocalization, useShareRedirect } from "@/hooks";
 import { useParams } from "next/navigation";
 
 function Page() {
+  const { t: tStoreDetail } = useLocalization({
+    namespace: "storeDetail",
+  });
+
   // TODO: Detect Open in App
   const { isLoading: isShareRedirectLoading } = useShareRedirect();
 
@@ -42,8 +46,8 @@ function Page() {
 
           <section className="md:py-14 py-8">
             <Filters
-              title="كل الكوبونات"
-              placeholder="ابحث عن كوبون"
+              title={tStoreDetail("filters.title")}
+              placeholder={tStoreDetail("filters.placeholder")}
               filterType="coupon"
               showInputSearch={false}
               scroll={false}

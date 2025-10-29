@@ -58,6 +58,15 @@
       "placeholder": "ابحث عن متجر..."
     }
   },
+  "storeDetail": {
+    "mostUsed": {
+      "title": "الاكثر استخداما"
+    },
+    "filters": {
+      "title": "كل الكوبونات",
+      "placeholder": "ابحث عن كوبون"
+    }
+  },
   "coupon": {
     "filters": {
       "title": "الكوبونات",

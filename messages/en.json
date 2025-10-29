@@ -57,6 +57,15 @@
       "placeholder": "Search for a store..."
     }
   },
+  "storeDetail": {
+    "mostUsed": {
+      "title": "Most Used"
+    },
+    "filters": {
+      "title": "All Coupons",
+      "placeholder": "Search for a coupon"
+    }
+  },
   "coupon": {
     "filters": {
       "title": "Coupons",
