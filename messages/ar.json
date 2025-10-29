@@ -124,7 +124,7 @@
       "showStore": "عرض المتجر"
     },
     "categoryCard": {
-      "couponsCount": "{couponsCount} خصم متاح"
+      "storesCount": "{storesCount} متجر متاح"
     },
     "tabs": {
       "stores": "المتاجر",

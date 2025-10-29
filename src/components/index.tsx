@@ -4,3 +4,4 @@ export * from "./shared";
 export * from "./filter";
 export { default as LangSwitcher } from "./LangSwitcher";
 export { default as Pagination } from "./Pagination";
+export { default as SwitchCountry } from "./SwitchCountry";

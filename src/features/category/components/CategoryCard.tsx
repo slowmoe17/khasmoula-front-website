@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Category } from "../types";
 
 type CategoryCardProps = {
-  category: Category & { coupons: number };
+  category: Category & { stores: number };
 };
 
 function CategoryCard({ category }: CategoryCardProps) {
@@ -17,7 +17,7 @@ function CategoryCard({ category }: CategoryCardProps) {
   return (
     <Link
       href={
-        category.coupons > 0
+        category.stores > 0
           ? routes.categoryDetail(category._id)
           : routes.coupon
       }
@@ -36,7 +36,7 @@ function CategoryCard({ category }: CategoryCardProps) {
       <div className="flex flex-col gap-1">
         <h3 className="text-xl">{category.name}</h3>
         <p className="text-lg text-[#999999]">
-          {tCategoryCard("couponsCount", { couponsCount: category.coupons })}
+          {tCategoryCard("storesCount", { storesCount: category.stores })}
         </p>
       </div>
     </Link>

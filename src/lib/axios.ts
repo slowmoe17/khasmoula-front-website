@@ -8,13 +8,28 @@ const api = axios.create({
   },
 });
 
-api.interceptors.request.use((config) => {
-  if (typeof window !== "undefined") {
-    const country = localStorage.getItem("country") || "SA";
+let waitForCountry: Promise<void> | null = null;
 
+api.interceptors.request.use(async (config) => {
+  if (typeof window !== "undefined") {
+    // if the country is not ready, wait for it
+    if (!window.__countryReady) {
+      if (!waitForCountry) {
+        waitForCountry = new Promise<void>((resolve) => {
+          const checkReady = setInterval(() => {
+            if (window.__countryReady) {
+              clearInterval(checkReady);
+              resolve();
+            }
+          }, 50);
+        });
+      }
+      await waitForCountry;
+    }
+
+    const country = localStorage.getItem("country") || "SA";
     const pathParts = window.location.pathname.split("/").filter(Boolean);
     const locale = pathParts[0];
-
     const lang = Object.values(LANGUAGE).includes(locale as LANGUAGE)
       ? locale
       : LANGUAGE["العربية"];
@@ -25,6 +40,7 @@ api.interceptors.request.use((config) => {
       lang,
     };
   }
+
   return config;
 });
 

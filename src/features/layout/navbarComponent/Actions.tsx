@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, LangSwitcher } from "@/components";
+import { Button, LangSwitcher, SwitchCountry } from "@/components";
 import { BookmarkIcon } from "@/components/icons";
 import { Link } from "@/i18n/navigation";
 import { routes } from "@/lib/route";
@@ -33,6 +33,8 @@ function Actions() {
       </Link>
 
       <LangSwitcher />
+
+      <SwitchCountry />
     </div>
   );
 }

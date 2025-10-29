@@ -9,7 +9,7 @@ export type Category = {
 };
 
 export type GetCategoriesResponse = APIResponseMany<
-  Category & { coupons: number }
+  Category & { stores: number }
 >;
 
 export type GetCategoryByIdResponse = {

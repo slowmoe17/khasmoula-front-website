@@ -1,3 +1,6 @@
+"use client";
+
+import { memo } from "react";
 import useGetUserCountry from "../hook/useGetUserCountry";
 
 function DetectCountry() {
@@ -6,4 +9,4 @@ function DetectCountry() {
   return null;
 }
 
-export default DetectCountry;
+export default memo(DetectCountry);

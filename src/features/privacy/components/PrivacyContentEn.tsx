@@ -101,6 +101,21 @@ function PrivacyContentEn() {
             </p>
           </div>
         </div>
+
+        <div>
+          <h2 className="text-[26px] font-semibold">Location</h2>
+
+          <div className="text-2xl font-semibold mt-8">
+            <p className="leading-10">
+              Data Khasmoola may access your device&apos;s location to provide
+              country-specific coupons and store information.
+            </p>
+            <p className="leading-10">
+              This data is used solely within the app for personalized content
+              and is not stored or shared with third-parties.
+            </p>
+          </div>
+        </div>
       </div>
     </Container>
   );

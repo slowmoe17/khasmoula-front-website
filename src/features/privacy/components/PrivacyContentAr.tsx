@@ -96,6 +96,21 @@ function PrivacyContentAr() {
             </p>
           </div>
         </div>
+
+        <div>
+          <h2 className="text-[26px] font-semibold">الموقع</h2>
+
+          <div className="text-2xl font-semibold mt-8">
+            <p className="leading-10">
+              قد يصل تطبيق Khasmoola إلى موقع جهازك لتوفير قسائم وعروض خاصة بكل
+              دولة ومعلومات عن المتاجر المحلية.
+            </p>
+            <p className="leading-10">
+              تُستخدم هذه البيانات داخل التطبيق فقط لتخصيص المحتوى، ولا يتم
+              تخزينها أو مشاركتها مع أي طرف ثالث.
+            </p>
+          </div>
+        </div>
       </div>
     </Container>
   );
