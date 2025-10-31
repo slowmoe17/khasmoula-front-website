@@ -23,12 +23,12 @@ function CouponCard(props: { coupon: Coupon }) {
   }, [coupon._id, couponCountMutation]);
 
   return (
-    <div className="bg-primary-light-active border border-[#999999B2] rounded-[10px] pb-8 max-md:overflow-hidden">
+    <div className="bg-primary-light-active border border-[#999999B2] rounded-[10px] pb-8 max-md:overflow-hidden flex flex-col">
       <div className="md:px-5 px-3 md:pt-5 pt-3 flex items-center justify-between">
         <BookmarkButton item={coupon} type="coupon" />
         <ShareButton _id={coupon._id} />
       </div>
-      <div className="md:mt-5.5 mt-2">
+      <div className="md:mt-5.5 mt-2 flex-1 flex flex-col">
         <Link href={routes.storeDetail(coupon.store._id)}>
           <Image
             src={coupon.store.logo}
@@ -45,7 +45,13 @@ function CouponCard(props: { coupon: Coupon }) {
               store: coupon.store.name,
             })}
           </h3>
-          <p className="text-center text-xl mt-7">
+          <p
+            className="text-center text-xl mt-7 line-clamp-2"
+            title={tComponents("description", {
+              discount: coupon.discount,
+              store: coupon.store.name,
+            })}
+          >
             {tComponents("description", {
               discount: coupon.discount,
               store: coupon.store.name,
@@ -53,19 +59,21 @@ function CouponCard(props: { coupon: Coupon }) {
           </p>
         </div>
 
-        <div className="mt-8 md:h-[60px] h-[40px] flex items-center justify-center relative">
-          <div className="dashed-box w-full" />
+        <div className="flex-1 flex flex-col justify-end">
+          <div className="mt-8 md:h-[60px] h-[40px] flex items-center justify-center relative">
+            <div className="dashed-box w-full" />
 
-          <div className="w-[60px] h-[60px] bg-background rounded-full absolute top-1/2 -translate-y-1/2 -left-[30px]" />
-          <div className="w-[60px] h-[60px] bg-background rounded-full absolute top-1/2 -translate-y-1/2 -right-[30px]" />
-        </div>
+            <div className="w-[60px] h-[60px] bg-background rounded-full absolute top-1/2 -translate-y-1/2 -left-[30px]" />
+            <div className="w-[60px] h-[60px] bg-background rounded-full absolute top-1/2 -translate-y-1/2 -right-[30px]" />
+          </div>
 
-        <div className="px-9.5">
-          <CopyCodeButton
-            code={coupon.code}
-            link={coupon.store.link}
-            onCopy={handleCopy}
-          />
+          <div className="px-9.5">
+            <CopyCodeButton
+              code={coupon.code}
+              link={coupon.store.link}
+              onCopy={handleCopy}
+            />
+          </div>
         </div>
       </div>
     </div>
