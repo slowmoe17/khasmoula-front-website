@@ -10,7 +10,7 @@ function useShareRedirect() {
       typeof navigator !== "undefined" ? navigator.userAgent : "";
 
     const playStore =
-      "https://play.google.com/store/apps/details?id=com.devsisters.ck&pcampaignid=web_share";
+      "https://play.google.com/store/apps/details?id=com.khasmoola.khasmoola";
     const appStore = "https://apps.apple.com/app/id6502813342";
 
     const isAndroid = /android/i.test(userAgent);
