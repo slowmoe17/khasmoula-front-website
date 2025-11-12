@@ -81,17 +81,17 @@ function Page() {
           filterType={tab === "stores" ? "store" : "coupon"}
         />
 
-        <HandleResponse
-          dataLength={data.length}
-          isLoading={isLoading || isPending}
-          data="many"
-        >
-          <div className="sm:mt-12 mt-6">
-            <Tabs defaultValue={tab} onValueChange={setTab}>
-              <TabsList className="flex items-center justify-center gap-5 w-fit mx-auto max-sm:flex-wrap">
-                <TabsTrigger value="stores">{tTabs("stores")}</TabsTrigger>
-                <TabsTrigger value="coupons">{tTabs("coupons")}</TabsTrigger>
-              </TabsList>
+        <div className="sm:mt-12 mt-6">
+          <Tabs defaultValue={tab} onValueChange={setTab}>
+            <TabsList className="flex items-center justify-center gap-5 w-fit mx-auto max-sm:flex-wrap">
+              <TabsTrigger value="stores">{tTabs("stores")}</TabsTrigger>
+              <TabsTrigger value="coupons">{tTabs("coupons")}</TabsTrigger>
+            </TabsList>
+            <HandleResponse
+              dataLength={data.length}
+              isLoading={isLoading || isPending}
+              data="many"
+            >
               <TabsContent value="coupons">
                 <div className="grid sm:grid-cols-[repeat(auto-fill,minmax(420px,1fr))] gap-5 mt-12">
                   {data.map((coupon) => (
@@ -106,17 +106,17 @@ function Page() {
                   ))}
                 </div>
               </TabsContent>
-            </Tabs>
+            </HandleResponse>
+          </Tabs>
 
-            <Pagination
-              total={meta.total}
-              limit={meta.limit}
-              currentPage={meta.page}
-              onPageChange={handlePageChange}
-              className="mt-20"
-            />
-          </div>
-        </HandleResponse>
+          <Pagination
+            total={meta.total}
+            limit={meta.limit}
+            currentPage={meta.page}
+            onPageChange={handlePageChange}
+            className="mt-20"
+          />
+        </div>
       </Container>
     </div>
   );
